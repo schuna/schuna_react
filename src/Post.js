@@ -21,13 +21,13 @@ function Post({post, authToken, authTokenType, username}) {
         event?.preventDefault();
 
         const requestOptions = {
-            method: 'GET',
+            method: 'DELETE',
             headers: new Headers({
-                'Authorization': authTokenType + authToken
+                'Authorization': authTokenType + ' ' + authToken,
             })
         }
 
-        fetch(BASE_URL + 'post/delete/' + post.id, requestOptions)
+        fetch(BASE_URL + 'post/' + post.id, requestOptions)
             .then(response => {
                 if (response.ok) {
                     window.location.reload()
